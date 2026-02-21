@@ -132,26 +132,22 @@ export class ShipScene extends Phaser.Scene {
   update(): void {
     if (this.isMoving) return;
 
-    // Check movement input - in isometric, directions are rotated 45 degrees
-    // Up arrow = move toward top-right of screen (col+0, row-1)
-    // Down arrow = move toward bottom-left (col+0, row+1)
-    // Left arrow = move toward top-left (col-1, row+0)
-    // Right arrow = move toward bottom-right (col+1, row+0)
-
+    // Screen-aligned movement: keys move in the visual direction on screen
+    // Each screen direction maps to a diagonal on the tile grid
     let dCol = 0;
     let dRow = 0;
 
     if (this.cursors.up.isDown || this.wasd.W.isDown) {
-      dRow = -1; // up in iso
+      dCol = -1; dRow = -1; // screen up
       this.setFacing('up');
     } else if (this.cursors.down.isDown || this.wasd.S.isDown) {
-      dRow = 1; // down in iso
+      dCol = 1; dRow = 1; // screen down
       this.setFacing('down');
     } else if (this.cursors.left.isDown || this.wasd.A.isDown) {
-      dCol = -1; // left in iso
+      dCol = -1; dRow = 1; // screen left
       this.setFacing('left');
     } else if (this.cursors.right.isDown || this.wasd.D.isDown) {
-      dCol = 1; // right in iso
+      dCol = 1; dRow = -1; // screen right
       this.setFacing('right');
     }
 
