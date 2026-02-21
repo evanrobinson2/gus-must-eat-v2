@@ -1,0 +1,24 @@
+{
+  "name": "gus-must-eat-v2",
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "gen": "tsx pipeline/generate-asset.ts",
+    "gen:list": "tsx pipeline/generate-asset.ts --list",
+    "gen:all": "tsx pipeline/generate-asset.ts --all"
+  },
+  "dependencies": {
+    "openai": "^4.28.0",
+    "phaser": "^3.80.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "playwright": "^1.58.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
+  }
+}
