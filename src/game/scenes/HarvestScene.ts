@@ -226,6 +226,7 @@ export class HarvestScene extends Phaser.Scene {
 
   private updateEnemyMovement(): void {
     this.enemies.children.iterate((obj: Phaser.GameObjects.GameObject) => {
+      if (!obj) return true;
       const e = obj as Phaser.Physics.Arcade.Sprite;
       if (e.active) this.physics.moveToObject(e, this.player, 80);
       return true;
@@ -235,6 +236,7 @@ export class HarvestScene extends Phaser.Scene {
   private cleanupOffscreen(): void {
     const margin = 100;
     this.asteroids.children.iterate((obj: Phaser.GameObjects.GameObject) => {
+      if (!obj || !obj.active) return true;
       const s = obj as Phaser.Physics.Arcade.Sprite;
       if (s.x < -margin || s.x > 800 + margin || s.y < -margin || s.y > 600 + margin) s.destroy();
       return true;
